@@ -95,7 +95,8 @@ public class VideoAdapter extends ArrayAdapter<VideoInfo> implements ChannelIcon
 
         final VideoInfo video = getItem(position);
 
-        holder.videoTitle.setMaxLines((isCompactLayout || isNoIconLayout) && (video.views <= 0 || video.publishedAt == null) ? 3 : 2);
+                holder.videoTitle.setMaxLines(3);
+        
         holder.videoTitle.setText(video.title);
         holder.channelTitle.setText(buildMetaText(video));
 
