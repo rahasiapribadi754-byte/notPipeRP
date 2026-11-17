@@ -10,17 +10,11 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <!-- Steals initial focus so keyboard doesn't pop up on start -->
-        <View
-            android:layout_width="0px"
-            android:layout_height="0px"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:focusable="true" />
 
         <FrameLayout
             android:id="@android:id/tabcontent"
@@ -32,7 +26,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <!-- ListView fills the screen. Search bar is its scrollable header -->
                 <ListView
                     android:id="@+id/videos"
                     android:layout_width="fill_parent"
@@ -40,13 +33,15 @@
                     android:scrollbarStyle="outsideOverlay"
                     android:clipToPadding="false"
                     android:clickable="true"
+                    android:focusable="true"
+                    android:itemsCanFocus="true"
+                    android:listSelector="@drawable/tv_focus_selector"
                     android:choiceMode="none"
                     tools:listitem="@layout/item_video_noicon"
                     tools:listheader="@layout/header_search"
                     tools:paddingLeft="24dp"
                     tools:paddingRight="24dp"/>
 
-                <!-- Floats transparently on top of the list in the center -->
                 <ProgressBar
                     android:id="@+id/loading"
                     android:layout_width="wrap_content"
@@ -128,6 +123,9 @@
                         android:scrollbarStyle="outsideOverlay"
                         android:clipToPadding="false"
                         android:clickable="true"
+                        android:focusable="true"
+                        android:itemsCanFocus="true"
+                        android:listSelector="@drawable/tv_focus_selector"
                         android:choiceMode="none"
                         android:visibility="gone" />
 
@@ -212,9 +210,6 @@
                             android:maxLines="2"
                             android:ellipsize="end" />
 
-                        <!-- Wrapper with weight=1 takes the title's space while
-                             the inner spinner stays wrap_content centered so it
-                             never stretches. Logout button stays on the right. -->
                         <LinearLayout
                             android:id="@+id/me_channel_loading"
                             android:layout_width="0dp"
@@ -237,6 +232,9 @@
                             android:id="@+id/btn_me_logout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:background="@drawable/tv_focus_selector"
+                            android:padding="10dp"
                             android:text="@string/logout" />
                     </LinearLayout>
 
@@ -244,6 +242,9 @@
                         android:id="@+id/btn_me_login"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:background="@drawable/tv_focus_selector"
+                        android:padding="12dp"
                         android:text="@string/login" />
 
                     <TextView
