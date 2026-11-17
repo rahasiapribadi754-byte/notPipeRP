@@ -506,10 +506,20 @@ public class MainActivity extends Activity implements InstancesUpdater.OnInstanc
                         subscriptionsLoaded = false;
                         updateSubscriptionsUI();
                         videos = null;
-                        isSearchMode = false;
+                                                String[] kidsShows = new String[] {
+                            "Like Nastya",
+                            "Masha and the Bear",
+                            "Upin Ipin",
+                            "BabyBus",
+                            "Leo si Penjaga Alam",
+                            "Polisi Labrador"
+                        };
+                        String randomShow = kidsShows[new java.util.Random().nextInt(kidsShows.length)];
+                        isSearchMode = true;
                         View loadingView = findViewById(R.id.loading);
                         if (loadingView != null) loadingView.setVisibility(View.VISIBLE);
-                        new PopularTask().execute();
+                        new SearchTask().execute(randomShow);
+
                     } catch (IllegalStateException e) {
                         Toast.makeText(MainActivity.this, R.string.logout_failed, Toast.LENGTH_SHORT).show();
                     }
