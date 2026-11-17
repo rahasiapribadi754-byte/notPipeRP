@@ -2123,6 +2123,8 @@ public class VideoActivity extends Activity {
 
         setupAuthUI();
         loadRelatedVideos();
+             playVideo();
+
     }
 
     @Override
