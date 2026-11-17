@@ -371,15 +371,26 @@ public class MainActivity extends Activity implements InstancesUpdater.OnInstanc
                 }
             }
 
-            if (!isUpdatingInstances) {
+                        if (!isUpdatingInstances) {
                 if (isSearchMode && searchQuery.getText().toString().trim().length() > 0) {
                     loading.setVisibility(View.VISIBLE);
                     new SearchTask().execute(searchQuery.getText().toString().trim());
                 } else {
-                    isSearchMode = false;
-                    new PopularTask().execute();
+                    String[] kidsShows = new String[] {
+                        "Like Nastya",
+                        "Masha and the Bear",
+                        "Upin Ipin",
+                        "BabyBus",
+                        "Leo si Penjaga Alam",
+                        "Polisi Labrador"
+                    };
+                    String randomShow = kidsShows[new java.util.Random().nextInt(kidsShows.length)];
+                    isSearchMode = true;
+                    loading.setVisibility(View.VISIBLE);
+                    new SearchTask().execute(randomShow);
                 }
             }
+
         } else {
             loading.setVisibility(View.GONE);
             noPopular.setVisibility(View.GONE);
