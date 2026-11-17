@@ -909,7 +909,24 @@ public class VideoActivity extends Activity {
                         updateWatchtime(videoPosition, true);
                     }
                 } catch (Exception ignored) {}
-                videoPosition = 0;
+                videoPosition = 0;                if (relatedVideos != null && !relatedVideos.isEmpty()) {
+                    VideoInfo nextVideo = null;
+                    for (int i = 0; i < relatedVideos.size(); i++) {
+                        VideoInfo candidate = relatedVideos.get(i);
+                        if (candidate != null && candidate.id != null && !candidate.id.equals(videoId)) {
+                            nextVideo = candidate;
+                            break;
+                        }
+                    }
+                    if (nextVideo != null) {
+                        Intent nextIntent = new Intent(VideoActivity.this, VideoActivity.class);
+                        nextIntent.putExtra("ID", nextVideo.id);
+                        startActivity(nextIntent);
+                        finish();
+                    }
+                }
+
+                
             }
         });
 
