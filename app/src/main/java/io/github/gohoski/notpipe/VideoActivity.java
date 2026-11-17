@@ -213,9 +213,9 @@ public class VideoActivity extends Activity {
         setupClickListeners();
         setupScrollHandler();
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE && !isTablet()) {
-            enterFullscreenMode();
-        }
+                enterFullscreenMode();
+
+    
 
         if (VideoCache.hasValidMetadata(videoId)) {
             api = VideoCache.getMetadataInstance();
